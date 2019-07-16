@@ -27,6 +27,7 @@ test_requirements = [
     'tox',
     'coverage',
     'wheel',
+    'pytest'
 ]
 
 setuptools.setup(
