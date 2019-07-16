@@ -1,10 +1,16 @@
 language: python
 python:
-  - "3.6"
-# command to install dependencies
+- '3.6'
 install:
-  - pip install -r requirements.txt
-# command to run tests
+- pip install -r requirements.txt
 script:
-  - pytest
-  - python setup.py bdist_wheel
+- pytest
+- make dist
+deploy:
+  provider: pypi
+  user: "ohmrefresh"
+  password:
+    secure: L/6GcpxjdlGaygXhFJVmg1+CYiWe+Fz+uNj0/OtSVIAMgibUe5PDuZUEm+c2vuA6R4DnI/UeJMjSe/RYYJnjXzHqz1nFiTqszOsxR6646t+zDQc9ZR2Ay4ybMAE5lnxwBdKbtyDdfBLRNnRY24CQKqULGPztP2fpLAimmja2JvJTj+Fb9LulbUentnCT7+7LZAd2xmsQMZozlFxQo0VPqqScYLuDVvbpYCQ5sn1s08hOQjycg1BB/ron3X74o2fTe+UxzyqVX3PSiNvc0buvCB1d05RPxsLFlMkPVAo+sY2NYSE5sbTYvRPn4DdjCjz2Cob4ryd661LkgKbJtr/12FIcdSuPpQshy2EeTabV7p//oH1mxnIMVClYSKSrrOCb4SmXbO+vu3zDsNDOy7WgWBenTUL+coyDWL+2Ucnt6pLHaCALKstAa3bzayOC/8LX3yzKM6JvKeFzpdIIYbC08F5ODAVc+TFqrsvBoj8IrBCt8/LQQdQQgKbAr+1TQ1CDjYQ/atTw4sMDtCrIgZkLio3dQhR5eqeV+aw5nWry4kEpGasWYazVa7g8LtXw311NmkhZgejuaHA+oSxvZq5g8VLF8p6AP9H4TbyaZnnekCd1sbRsajX0KEdPpQgEU0tJQXOJ6U7PJqoxJ9SuYW5Qvte6d8gcHtZ4T3GSnD0+oZk=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
