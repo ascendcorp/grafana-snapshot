@@ -20,7 +20,8 @@ else:
 requirements = [
     'python-dotenv',
     'setuptools',
-    'requests'
+    'requests',
+    'grafana_api'
 ]
 
 test_requirements = [
