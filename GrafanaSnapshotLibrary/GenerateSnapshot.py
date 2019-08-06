@@ -38,25 +38,3 @@ class GenerateSnapshot:
     @staticmethod
     def __time_str_from_unix_ms(unix_ms):
         return datetime.datetime.utcfromtimestamp(int(unix_ms / 1000)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
-
-#
-#
-# grafana_api = GrafanaFace(auth='x=',
-#                           host='xx', port=3000, protocol="https", verify=False)
-#
-#
-# dashboards_info = grafana_api.search.search_dashboards(tag='tags')
-# dashboards = {}
-# for dashboard_info in dashboards_info:
-#     uid = dashboard_info["uid"]
-#     dashboards[dashboard_info['uri']] = grafana_api.dashboard.get_dashboard(uid);
-#
-# snapshot_list = []
-# for uri, dashboard in dashboards.items():
-#     dashboard = dashboard["dashboard"] if "dashboard" in dashboard else dashboard
-#     if time_from:
-#         dashboard["time"]["from"] = time_str_from_unix_ms(time_from)
-#     if time_to:
-#         dashboard["time"]["to"] = time_str_from_unix_ms(time_to)
-#     snapshot = grafana_api.snapshots.create_new_snapshot(dashboard, name=uri.replace("db/", ""),expires=300)
-#     print(snapshot)
