@@ -5,7 +5,7 @@ import re
 import setuptools
 
 # Read version from file without loading the module
-with open('GrafanaSnapshotLibrary/version.py', 'r') as version_file:
+with open('GrafanaSnapshot/version.py', 'r') as version_file:
     version_match = re.search(r"^VERSION ?= ?['\"]([^'\"]*)['\"]",
                               version_file.read(), re.M)
 with open("README.md", "r") as fh:
@@ -32,14 +32,14 @@ test_requirements = [
 ]
 
 setuptools.setup(
-    name="GrafanaSnapshotLibrary",
+    name="grafana-snapshot",
     version=VERSION,
     author="Authapon Kongkaew",
     author_email="ohmrefresh@gmail.com",
     description="A small example package",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ohmrefresh/GrafanaSnapshotLibrary.git",
+    url="https://github.com/ohmrefresh/GrafanaSnapshot.git",
     install_requires=requirements,
     packages=setuptools.find_packages(),
     classifiers=[

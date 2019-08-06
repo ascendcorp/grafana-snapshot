@@ -11,7 +11,17 @@ class GenerateSnapshot:
     def __init__(self, auth, host, port, protocol):
         self.api = GrafanaFace(auth=auth, host=host, port=port, protocol=protocol, verify=False)
 
-    def generate(self, tags, time_from, time_to):
+    def generate(self, tags, time_from, time_to, expires=300):
+
+        """
+        Generate Grafana snapshot with expires
+        :param tags:
+        :param time_from:
+        :param time_to:
+        :param expires:
+        :return:
+        """
+
         dashboards_info = self.api.search.search_dashboards(tag=tags)
         dashboards = {}
         for dashboard_info in dashboards_info:
@@ -29,10 +39,9 @@ class GenerateSnapshot:
             snapshot_name = "{}_{}_{}".format(uri.replace("db/", ""), dashboard["time"]["from"],
                                               dashboard["time"]["to"])
 
-            snapshot = self.api.snapshots.create_new_snapshot(dashboard, name=snapshot_name, expires=300)
+            snapshot = self.api.snapshots.create_new_snapshot(dashboard, name=snapshot_name, expires=expires)
             snapshot_list.append(snapshot)
 
-        print(snapshot_list)
         return snapshot_list
 
     @staticmethod

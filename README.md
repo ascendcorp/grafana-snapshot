@@ -2,25 +2,23 @@
 
 # Current status in development
 
+## Install
+If you want to use the API algorithms in your code, it is as simple as:
 
-# grafana_api = GrafanaFace(auth='',
-#                           host='xx', port=3000, protocol="https", verify=False)
+    $ pip3 install grafana-snapshot
 
-#
-# dashboards_info = grafana_api.search.search_dashboards(tag='tags')
-# print(dashboards_info)
-# dashboards = {}
-# for dashboard_info in dashboards_info:
-#     uid = dashboard_info["uid"]
-#     dashboards[dashboard_info['uri']] = grafana_api.dashboard.get_dashboard(uid);
-#
-# snapshot_list = []
-# for uri, dashboard in dashboards.items():
-#     dashboard = dashboard["dashboard"] if "dashboard" in dashboard else dashboard
-#     if time_from:
-#         dashboard["time"]["from"] = time_str_from_unix_ms(time_from)
-#     if time_to:
-#         dashboard["time"]["to"] = time_str_from_unix_ms(time_to)
-#     snapshot = grafana_api.snapshots.create_new_snapshot(dashboard, name=uri.replace("db/", ""),expires=300)
-#     print(snapshot)
- 
+You can test by creating a python file:
+
+```python3
+from GenerateSnapshot import GenerateSnapshot
+
+if __name__ == "__main__":
+    grafana = GenerateSnapshot(auth='', host='xx', port=3000, protocol="https", verify=False)
+    grafana.generate(tags="tags", time_from="1563183710618", time_to="1563185212275")
+
+```
+
+## Uninstall
+If you want to uninstall grafana-snapshot, it is as simple as:
+
+    $ pip3 uninstall -y grafana-snapshot
