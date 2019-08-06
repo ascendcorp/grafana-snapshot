@@ -33,7 +33,7 @@ test_requirements = [
 
 setuptools.setup(
     name="GrafanaSnapshotLibrary",
-    version="0.0.1",
+    version=VERSION,
     author="Authapon Kongkaew",
     author_email="ohmrefresh@gmail.com",
     description="A small example package",
