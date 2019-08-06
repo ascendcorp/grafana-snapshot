@@ -28,6 +28,8 @@ test_requirements = [
     'tox',
     'coverage',
     'wheel',
+    'requests_mock',
+    'xmlrunner',
     'pytest'
 ]
 

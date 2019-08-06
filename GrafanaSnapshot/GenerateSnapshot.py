@@ -1,6 +1,7 @@
 from grafana_api.grafana_face import GrafanaFace
 import urllib3
 import datetime
+import json
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -21,7 +22,7 @@ class GenerateSnapshot:
 
 
         """
-        self.api = GrafanaFace(auth=auth, host=host, port=port, protocol=protocol, verify=False)
+        self.api = GrafanaFace(auth=auth, host=host, port=port, protocol=protocol, url_path_prefix="", verify=False)
 
     def generate(self, tags, time_from, time_to, expires=300):
 
