@@ -1,7 +1,6 @@
 from grafana_api.grafana_face import GrafanaFace
 import urllib3
 import datetime
-import json
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -53,10 +52,11 @@ class GenerateSnapshot:
                                               dashboard["time"]["to"])
 
             snapshot = self.api.snapshots.create_new_snapshot(dashboard, name=snapshot_name, expires=expires)
-            snapshot_list.append(snapshot)
+            snapshot_list.append(snapshot['url'])
 
         return snapshot_list
 
     @staticmethod
     def __time_str_from_unix_ms(unix_ms):
         return datetime.datetime.utcfromtimestamp(int(unix_ms / 1000)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+

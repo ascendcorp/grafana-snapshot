@@ -1,14 +1,7 @@
 import unittest
-import sys
-import json
-import xmlrunner
+
 import requests_mock
 from GrafanaSnapshot.GenerateSnapshot import GenerateSnapshot
-
-if sys.version_info > (3, 0):
-    from unittest.mock import patch, Mock
-else:
-    from mock import patch, Mock
 
 
 class TestGrafanaAPI(unittest.TestCase):
@@ -66,12 +59,9 @@ class TestGrafanaAPI(unittest.TestCase):
 
         grafana = GenerateSnapshot(auth="xxxxx", port=3000, host="localhost", protocol="http")
         results = grafana.generate(tags="test_tag", time_from=1563183710618, time_to=1563185212275)
-        # json.dumps(results)
-
-        # self.assertEqual(len(results[0]), 1)
-        # print(json.load results)
+        self.assertEqual(len(results), 1)
 
 
 if __name__ == "__main__":
-
+    import xmlrunner
     unittest.main(testRunner=xmlrunner.XMLTestRunner(output="test-reports"))
