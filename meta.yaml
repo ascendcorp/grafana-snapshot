@@ -1,0 +1,44 @@
+{% set data = load_setup_py_data(setup_file='setup.py', from_recipe_dir=True) %}
+{% set name = data['name'] %}
+{% set version = data['version'] %}
+{% set url = data['url'] %}
+{% set license = data['license'] %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  path: .
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - python
+    - requests
+    - pyyaml
+  run:
+    - python
+    - requests
+    - pyyaml
+
+test:
+  imports:
+    - grafana_api.api
+
+about:
+  home: "{{ url }}"
+  license: "{{ license }}"
+  license_family: "{{ license }}"
+  license_file: LICENSE
+  summary: Yet another Python library for GrafanaSnapshot
+  doc_url: https://github.com/ohmrefresh/GrafanaSnapshot
+  dev_url:
+
+extra:
+  recipe-maintainers:
+    - ohmrefresh

@@ -28,7 +28,10 @@ test_requirements = [
     'tox',
     'coverage',
     'wheel',
-    'pytest'
+    'requests_mock',
+    'xmlrunner',
+    'pytest',
+    'unittest-xml-reporting'
 ]
 
 setuptools.setup(
@@ -46,6 +49,14 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Topic :: Software Development",
     ],
     test_suite='tests',
     tests_require=test_requirements

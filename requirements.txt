@@ -1,6 +1,9 @@
+unittest-xml-reporting
 urllib3
 argparse
 requests
 python-dotenv
 pytest
 grafana_api
+codecov
+requests_mock

@@ -21,7 +21,7 @@ class GenerateSnapshot:
 
 
         """
-        self.api = GrafanaFace(auth=auth, host=host, port=port, protocol=protocol, verify=False)
+        self.api = GrafanaFace(auth=auth, host=host, port=port, protocol=protocol, url_path_prefix="", verify=False)
 
     def generate(self, tags, time_from, time_to, expires=300):
 
@@ -52,10 +52,11 @@ class GenerateSnapshot:
                                               dashboard["time"]["to"])
 
             snapshot = self.api.snapshots.create_new_snapshot(dashboard, name=snapshot_name, expires=expires)
-            snapshot_list.append(snapshot)
+            snapshot_list.append(snapshot['url'])
 
         return snapshot_list
 
     @staticmethod
     def __time_str_from_unix_ms(unix_ms):
         return datetime.datetime.utcfromtimestamp(int(unix_ms / 1000)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+

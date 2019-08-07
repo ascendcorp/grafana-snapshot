@@ -1,4 +1,4 @@
-# GrafanaSnapshotLibrary Package [![Build Status](https://travis-ci.com/ohmrefresh/GrafanaSnapshot.svg?branch=master)](https://travis-ci.com/ohmrefresh/GrafanaSnapshot)
+# GrafanaSnapshot Package [![Build Status](https://travis-ci.com/ohmrefresh/GrafanaSnapshot.svg?branch=master)](https://travis-ci.com/ohmrefresh/GrafanaSnapshot)
 
 # Current status in development
 
@@ -14,7 +14,7 @@ from GrafanaSnapshot.GenerateSnapshot import GenerateSnapshot
 
 if __name__ == "__main__":
     grafana = GenerateSnapshot(auth='', host='xx', port=3000, protocol="https")
-    grafana.generate(tags="tags", time_from="1563183710618", time_to="1563185212275")
+    grafana.generate(tags="tags", time_from=1563183710618, time_to=1563185212275)
 
 ```
 

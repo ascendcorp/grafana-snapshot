@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "grafana-snapshot"
+
+[packages]
+
+[dev-packages]
+codecov = "~=2.0"
+coverage = "~=4.5"
+mock = {version = "*", markers = "python_version <= '2.7'"}
+pylint = ">=1.9"
+requests-mock = "~=1.6"
+unittest-xml-reporting = "~=2.5"
