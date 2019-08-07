@@ -38,7 +38,7 @@ setuptools.setup(
     name="grafana-snapshot",
     version=VERSION,
     author="Authapon Kongkaew",
-    author_email="ohmrefresh@gmail.com",
+    author_email="ohmrefresh@gmail.com, authapon.kon@ascendcorp.com",
     description="A small example package",
     long_description=long_description,
     long_description_content_type="text/markdown",
