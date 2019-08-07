@@ -6,3 +6,4 @@ python-dotenv
 pytest
 grafana_api
 codecov
+requests_mock
