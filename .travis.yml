@@ -5,7 +5,8 @@ python:
 install:
 - pip install -r requirements.txt
 script:
-- pytest
+- pytest -vv --cov=./ --cov-report=xml
+- codecov
 - make clean docs dist
 deploy:
   provider: pypi
@@ -16,5 +17,3 @@ deploy:
     tags: true
     distributions: sdist bdist_wheel
     repo: ohmrefresh/GrafanaSnapshot
-after_success:
-  - codecov
