@@ -1,50 +1,38 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+from subprocess import check_output
+from setuptools import setup, find_packages
 
-import re
-import setuptools
 
-# Read version from file without loading the module
-with open('GrafanaSnapshot/version.py', 'r') as version_file:
-    version_match = re.search(r"^VERSION ?= ?['\"]([^'\"]*)['\"]",
-                              version_file.read(), re.M)
+def get_version():
+    try:
+        tag = check_output(
+            ["git", "describe", "--tags", "--abbrev=0", "--match=[0-9]*"]
+        )
+        return tag.decode("utf-8").strip("\n")
+    except Exception:
+        raise RuntimeError(
+            "The version number cannot be extracted from git tag in this source "
+            "distribution; please either download the source from PyPI, or check out "
+            "from GitHub and make sure that the git CLI is available."
+        )
+
+
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 
-if version_match:
-    VERSION=version_match.group(1)
-else:
-    VERSION='0.1' #
-
-requirements = [
-    'python-dotenv',
-    'setuptools',
-    'requests',
-    'grafana_api'
-]
-
-test_requirements = [
-    'tox',
-    'coverage',
-    'wheel',
-    'requests_mock',
-    'xmlrunner',
-    'pytest',
-    'unittest-xml-reporting'
-]
-
-setuptools.setup(
+setup(
     name="grafana-snapshot",
-    version=VERSION,
+    version=get_version(),
     author="Authapon Kongkaew",
     author_email="ohmrefresh@gmail.com, authapon.kon@ascendcorp.com",
     description="A small example package",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ohmrefresh/GrafanaSnapshot.git",
-    install_requires=requirements,
-    packages=setuptools.find_packages(),
+    license="MIT",
+    packages=find_packages(),
+    install_requires=['requests', 'grafana_api'],
+    tests_require=['tox', 'coverage', 'wheel', 'requests_mock', 'xmlrunner', 'pytest', 'unittest-xml-reporting'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -57,7 +45,5 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Topic :: Software Development",
-    ],
-    test_suite='tests',
-    tests_require=test_requirements
+    ]
 )
