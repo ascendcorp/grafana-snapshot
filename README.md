@@ -22,3 +22,12 @@ if __name__ == "__main__":
 If you want to uninstall grafana-snapshot, it is as simple as:
 
     $ pip3 uninstall -y grafana-snapshot
+
+
+## Status
+
+| API | Status |
+|---|---|
+| Create Snapshot | + |
+| Delete Snapshot | - |
+| Get Snapshot by tags | - |
