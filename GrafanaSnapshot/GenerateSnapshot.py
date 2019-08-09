@@ -36,7 +36,6 @@ class GenerateSnapshot(Base):
                                               dashboard["time"]["to"])
 
             snapshot = self.api.snapshots.create_new_snapshot(dashboard, name=snapshot_name, expires=expires)
-            print(snapshot)
             snapshot_list.append(snapshot['url'])
 
         return snapshot_list

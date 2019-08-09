@@ -14,11 +14,8 @@ class DeleteSnapshot(Base):
         """
 
         if delete_key:
-            print('delete_key ' + delete_key)
             return self.api.snapshots.delete_snapshot_by_delete_key(delete_key)
         elif key:
-            print('key ' + key)
             return self.api.snapshots.delete_snapshot_by_key(key)
         else:
-            print('NONE')
             return None
