@@ -1,10 +1,7 @@
-from grafana_api.grafana_face import GrafanaFace
+from .Base import Base
 
 
-class DeleteSnapshot:
-
-    def __init__(self, auth, host, port, protocol):
-        self.api = GrafanaFace(auth=auth, host=host, port=port, protocol=protocol, url_path_prefix="", verify=False)
+class DeleteSnapshot(Base):
 
     def delete(self, delete_key=None, key=None):
 
