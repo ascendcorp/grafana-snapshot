@@ -1,27 +1,11 @@
-from grafana_api.grafana_face import GrafanaFace
+from .Base import Base
 import urllib3
 import datetime
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
-class GenerateSnapshot:
-    api = None
-
-    def __init__(self, auth, host, port, protocol):
-        """
-        Init auth
-        :param auth: API Token  (https://grafana.com/docs/http_api/auth/#create-api-token)
-        :param host: Host of the API server Ex. 127.0.0.1
-        :param port: Ex. 3000  (default port)
-        :param protocol: http or https
-
-        .. code-block:: python
-         grafana = GenerateSnapshot(auth='', host='xx', port=3000, protocol="https")
-
-
-        """
-        self.api = GrafanaFace(auth=auth, host=host, port=port, protocol=protocol, url_path_prefix="", verify=False)
+class GenerateSnapshot(Base):
 
     def generate(self, tags, time_from, time_to, expires=300):
 
@@ -59,4 +43,3 @@ class GenerateSnapshot:
     @staticmethod
     def __time_str_from_unix_ms(unix_ms):
         return datetime.datetime.utcfromtimestamp(int(unix_ms / 1000)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
-

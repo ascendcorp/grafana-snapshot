@@ -4,7 +4,7 @@ import requests_mock
 from GrafanaSnapshot.GenerateSnapshot import GenerateSnapshot
 
 
-class TestGrafanaAPI(unittest.TestCase):
+class TestGenerateSnapshot(unittest.TestCase):
 
     @requests_mock.Mocker()
     def test_generate(self, m):

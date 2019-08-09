@@ -3,6 +3,6 @@ urllib3
 requests
 pytest
 pytest-cov
-grafana_api
+grafana_api>=0.8.3
 codecov
 requests_mock
