@@ -39,6 +39,11 @@ class Snapshots(Base):
 
         return snapshot_list
 
+    def get_snapshot_by_key(self, key=None):
+        snapshot = self.api.snapshots.get_snapshot_by_key(key)
+
+        return snapshot
+
     def delete(self, delete_key=None, key=None):
 
         """
