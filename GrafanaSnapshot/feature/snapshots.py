@@ -39,10 +39,22 @@ class Snapshots(Base):
 
         return snapshot_list
 
-    def get_snapshot_by_key(self, key=None):
-        snapshot = self.api.snapshots.get_snapshot_by_key(key)
+    def get_snapshot_by_key(self, key, host):
 
-        return snapshot
+        """
+        Get Grafana snapshot with key
+        :param key:
+        :return:
+        """
+
+        snapshot = self.api.snapshots.get_dashboard_snapshots()
+        snapshot_list = []
+        for snapshot in snapshot:
+            if key in snapshot["name"]:
+                url=snapshot["name"]+" : "+"https://"+host+":3000/dashboard/snapshot/"+snapshot["key"]
+                snapshot_list.append(url)
+
+        return snapshot_list
 
     def delete(self, delete_key=None, key=None):
 
