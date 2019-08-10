@@ -1,4 +1,3 @@
-unittest-xml-reporting
 urllib3
 requests
 pytest

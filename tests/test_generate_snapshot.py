@@ -1,7 +1,6 @@
 import unittest
-
 import requests_mock
-from GrafanaSnapshot.GenerateSnapshot import GenerateSnapshot
+from GrafanaSnapshot.snapshot_face import SnapshotFace
 
 
 class TestGenerateSnapshot(unittest.TestCase):
@@ -57,8 +56,8 @@ class TestGenerateSnapshot(unittest.TestCase):
             },
         )
 
-        grafana = GenerateSnapshot(auth="xxxxx", port=3000, host="localhost", protocol="http")
-        results = grafana.generate(tags="test_tag", time_from=1563183710618, time_to=1563185212275)
+        grafana = SnapshotFace(auth="xxxxx", port=3000, host="localhost", protocol="http")
+        results = grafana.snapshots.create_snapshot(tags="test_tag", time_from=1563183710618, time_to=1563185212275)
         self.assertEqual(len(results), 1)
 
     @requests_mock.Mocker()
@@ -111,11 +110,7 @@ class TestGenerateSnapshot(unittest.TestCase):
             },
         )
 
-        grafana = GenerateSnapshot(auth="xxxxx", port=3000, host="localhost", protocol="http")
-        results = grafana.generate(tags="test_tag", time_from=1563183710618, time_to=1563185212275, expires=500)
+        grafana = SnapshotFace(auth="xxxxx", port=3000, host="localhost", protocol="http")
+        results = grafana.snapshots.create_snapshot(tags="test_tag", time_from=1563183710618, time_to=1563185212275, expires=500)
         self.assertEqual(len(results), 1)
 
-
-if __name__ == "__main__":
-    import xmlrunner
-    unittest.main(testRunner=xmlrunner.XMLTestRunner(output="test-reports"))

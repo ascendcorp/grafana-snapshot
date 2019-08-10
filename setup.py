@@ -32,7 +32,7 @@ setup(
     license="MIT",
     packages=find_packages(),
     install_requires=['requests', 'grafana_api'],
-    tests_require=['tox', 'coverage', 'wheel', 'requests_mock', 'xmlrunner', 'pytest', 'unittest-xml-reporting'],
+    tests_require=['tox', 'coverage', 'wheel', 'requests_mock', 'pytest'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
