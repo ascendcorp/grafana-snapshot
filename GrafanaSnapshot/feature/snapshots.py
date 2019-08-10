@@ -1,13 +1,12 @@
-from .Base import Base
+from .base import Base
 import urllib3
 import datetime
-
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
-class GenerateSnapshot(Base):
+class Snapshots(Base):
 
-    def generate(self, tags, time_from, time_to, expires=300):
+    def create_snapshot(self, tags, time_from, time_to, expires=300):
 
         """
         Generate Grafana snapshot with expires
@@ -17,7 +16,7 @@ class GenerateSnapshot(Base):
         :param expires:
         :return:
         """
-
+        
         dashboards_info = self.api.search.search_dashboards(tag=tags)
         dashboards = {}
         for dashboard_info in dashboards_info:
@@ -39,6 +38,23 @@ class GenerateSnapshot(Base):
             snapshot_list.append(snapshot['url'])
 
         return snapshot_list
+
+    def delete(self, delete_key=None, key=None):
+
+        """
+
+        Delete snapshot with delete_key or snapshot key
+        :param delete_key:
+        :param key:
+        :return:
+        """
+
+        if delete_key:
+            return self.api.snapshots.delete_snapshot_by_delete_key(delete_key)
+        elif key:
+            return self.api.snapshots.delete_snapshot_by_key(key)
+        else:
+            return None
 
     @staticmethod
     def __time_str_from_unix_ms(unix_ms):

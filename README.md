@@ -1,4 +1,4 @@
-# GrafanaSnapshot Package [![Build Status](https://travis-ci.com/ascendcorp/GrafanaSnapshot.svg?branch=master)](https://travis-ci.com/ascendcorp/GrafanaSnapshot)
+# grafana-snapshot Package [![Build Status](https://travis-ci.com/ascendcorp/grafana-snapshot.svg?branch=master)](https://travis-ci.com/ascendcorp/grafana-snapshot)
 
 
 ## Install
@@ -12,12 +12,13 @@ You can test by creating a python file:
 from GrafanaSnapshot.GenerateSnapshot import GenerateSnapshot
 
 if __name__ == "__main__":
-    grafana = GenerateSnapshot(auth='', host='xx', port=3000, protocol="https")
-    result = grafana.generate(tags="tags", time_from=1563183710618, time_to=1563185212275)
-
+    grafana = SnapshotFace(auth='xxxxx', host='localhost', port='3000', protocol='https')
+    
+    ## Create snaphot
+    results = grafana.snapshots.create_snapshot(tags="test_tag", time_from=1563183710618, time_to=1563185212275)
+    
     ## Delete snaphot by key
-    grafana = DeleteSnapshot(auth='xxxxx', host='localhost', port='3000', protocol='http')
-    result = grafana.delete(delete_key='some_delete_key', key=None)
+    result = grafana.snapshots.delete(delete_key='some_delete_key', key=None)
 ```
 
 
