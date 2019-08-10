@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from .GenerateSnapshot import GenerateSnapshot
+from .snapshot_face import SnapshotFace
