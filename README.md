@@ -11,7 +11,7 @@ If you want to use the API algorithms in your code, it is as simple as:
 You can test by creating a python file:
 
 ```python3
-from GrafanaSnapshot.GenerateSnapshot import GenerateSnapshot
+from GrafanaSnapshot.snapshot_face import SnapshotFace
 
 if __name__ == "__main__":
     grafana = SnapshotFace(auth='xxxxx', host='localhost', port='3000', protocol='https')
