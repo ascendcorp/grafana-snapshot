@@ -1,5 +1,7 @@
-# grafana-snapshot Package [![Build Status](https://travis-ci.com/ascendcorp/grafana-snapshot.svg?branch=master)](https://travis-ci.com/ascendcorp/grafana-snapshot)
-
+# grafana-snapshot Package
+[![Build Status](https://travis-ci.com/ascendcorp/grafana-snapshot.svg)](https://travis-ci.com/ascendcorp/grafana-snapshot) 
+[![Codecov](https://img.shields.io/codecov/c/gh/ascendcorp/grafana-snapshot.svg)](https://codecov.io/gh/ascendcorp/grafana-snapshot) 
+[![PyPI](https://img.shields.io/pypi/v/grafana-snapshot.svg)](https://pypi.org/project/grafana-snapshot/)
 
 ## Install
 If you want to use the API algorithms in your code, it is as simple as:
