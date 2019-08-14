@@ -23,8 +23,8 @@ with open("README.md", "r") as fh:
 setup(
     name="grafana-snapshot",
     version=get_version(),
-    author="Authapon Kongkaew, Panchorn Lertvipada",
-    author_email="ohmrefresh@gmail.com, nonpcn@gmail.com",
+    author="Authapon Kongkaew, Nitipat Phiphatprathuang, Panchorn Lertvipada",
+    author_email="ohmrefresh@gmail.com, banknitipat@gmail.com, nonpcn@gmail.com",
     description="A small example package",
     long_description=long_description,
     long_description_content_type="text/markdown",

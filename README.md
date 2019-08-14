@@ -21,6 +21,9 @@ if __name__ == "__main__":
     
     ## Delete snaphot by key
     result = grafana.snapshots.delete(delete_key='some_delete_key', key=None)
+    
+    ## get snaphot by key
+    results = grafana.snapshots.get_snapshot_by_key(key='some_key')
 ```
 
 
@@ -37,4 +40,4 @@ If you want to uninstall grafana-snapshot, it is as simple as:
 |---|---|
 | Create Snapshot | + |
 | Delete Snapshot | + |
-| Get Snapshot by tags | - |
+| Get Snapshot by tags | + |
