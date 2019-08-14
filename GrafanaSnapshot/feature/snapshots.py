@@ -39,7 +39,7 @@ class Snapshots(Base):
 
         return snapshot_list
 
-    def get_snapshot_by_key(self, key, host):
+    def get_snapshot_by_key(self, key):
 
         """
         Get Grafana snapshot with key
@@ -51,7 +51,7 @@ class Snapshots(Base):
         snapshot_list = []
         for snapshot in snapshot:
             if key in snapshot["name"]:
-                url=snapshot["name"]+" : "+"https://"+host+":3000/dashboard/snapshot/"+snapshot["key"]
+                url=snapshot["name"]+" : "+self.protocol+"://"+self.host+":3000/dashboard/snapshot/"+snapshot["key"]
                 snapshot_list.append(url)
 
         return snapshot_list
