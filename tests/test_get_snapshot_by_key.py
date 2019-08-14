@@ -26,7 +26,7 @@ class TestGetSnapshotByKey(unittest.TestCase):
         )
 
         grafana = SnapshotFace(auth='xxxxx', host='localhost', port='3000', protocol='http')
-        results = grafana.snapshots.get_snapshot_by_key(key='some_key', host='localhost')
+        results = grafana.snapshots.get_snapshot_by_key(key='some_key')
 
         self.assertEqual(len(results), 1)
 
@@ -51,6 +51,6 @@ class TestGetSnapshotByKey(unittest.TestCase):
         )
 
         grafana = SnapshotFace(auth='xxxxx', host='localhost', port='3000', protocol='http')
-        results = grafana.snapshots.get_snapshot_by_key(key='not_found', host='localhost')
+        results = grafana.snapshots.get_snapshot_by_key(key='not_found')
 
         self.assertEqual(len(results), 0)
