@@ -32,5 +32,4 @@ class SnapshotFace:
             protocol=protocol,
             verify=verify,
         )
-
-        self.snapshots = Snapshots(self.api)
+        self.snapshots = Snapshots(self.api, host, protocol)
