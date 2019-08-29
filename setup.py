@@ -1,32 +1,18 @@
-from subprocess import check_output
 from setuptools import setup, find_packages
+import os
 
 
-def get_version():
-    try:
-        tag = check_output(
-            ["git", "describe", "--tags", "--abbrev=0", "--match=[0-9]*"]
-        )
-        return tag.decode("utf-8").strip("\n")
-    except Exception:
-        raise RuntimeError(
-            "The version number cannot be extracted from git tag in this source "
-            "distribution; please either download the source from PyPI, or check out "
-            "from GitHub and make sure that the git CLI is available."
-        )
-
-
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+def read(filename):
+    return open(os.path.join(os.path.dirname(__file__), filename)).read()
 
 
 setup(
     name="grafana-snapshot",
-    version=get_version(),
+    version=read('VERSION'),
     author="Authapon Kongkaew, Nitipat Phiphatprathuang, Panchorn Lertvipada",
     author_email="ohmrefresh@gmail.com, banknitipat@gmail.com, nonpcn@gmail.com",
-    description="A small example package",
-    long_description=long_description,
+    description="Task a grafana snapshot",
+    long_description=read('README.md'),
     long_description_content_type="text/markdown",
     url="https://github.com/ascendcorp/GrafanaSnapshot.git",
     license="MIT",
