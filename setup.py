@@ -6,10 +6,6 @@ def read(filename):
     return open(os.path.join(os.path.dirname(__file__), filename)).read()
 
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
-
-
 setup(
     name="grafana-snapshot",
     version=read('VERSION'),
