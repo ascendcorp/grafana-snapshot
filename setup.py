@@ -22,7 +22,7 @@ setup(
     description="Task a grafana snapshot",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ohmrefresh/GrafanaSnapshot.git",
+    url="https://github.com/ohmrefresh/grafana-snapshot.git",
     license="MIT",
     packages=find_packages(),
     install_requires=['requests', 'grafana_api'],
