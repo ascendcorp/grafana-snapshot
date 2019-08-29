@@ -1,20 +1,28 @@
 from setuptools import setup, find_packages
-import os
+import re
 
+# Read version from file without loading the module
+with open('GrafanaSnapshot/version.py', 'r') as version_file:
+    version_match = re.search(r"^VERSION ?= ?['\"]([^'\"]*)['\"]",
+                              version_file.read(), re.M)
 
-def read(filename):
-    return open(os.path.join(os.path.dirname(__file__), filename)).read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
+if version_match:
+    VERSION = version_match.group(1)
+else:
+    VERSION = '0.1'  #
 
 setup(
     name="grafana-snapshot",
-    version=read('VERSION'),
+    version=VERSION,
     author="Authapon Kongkaew, Nitipat Phiphatprathuang, Panchorn Lertvipada",
     author_email="ohmrefresh@gmail.com, banknitipat@gmail.com, nonpcn@gmail.com",
     description="Task a grafana snapshot",
-    long_description=read('README.md'),
+    long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ascendcorp/GrafanaSnapshot.git",
+    url="https://github.com/ohmrefresh/GrafanaSnapshot.git",
     license="MIT",
     packages=find_packages(),
     install_requires=['requests', 'grafana_api'],
